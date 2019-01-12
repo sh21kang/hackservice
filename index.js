@@ -12,11 +12,11 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/', (req, res) => {
 
-    res.render('add');
+    res.render('add',{stdout : " "});
     
 })
 
-app.post('/file', function(req, res){
+app.post('/', function(req, res){
     var title = req.body.title;
     try{
         exec(`${title}`, (e, stdout, stderr)=> {
@@ -32,7 +32,7 @@ app.post('/file', function(req, res){
                     console.log('The file has been saved!');
                     
                     });
-                res.send(`<pre> ${stdout}</pre>`);
+                res.render('add',{stdout});
             }
         });
     } catch(err){
@@ -45,7 +45,9 @@ app.get('/history',(req, res) => {
         if (err) throw err;
         console.log(data);
         console.log(typeof data)
-        res.send(`<pre> ${data}</pre>`)
+        res.send(`<form action = "/" method = "get">
+        <button type="submit" name="upvote" value="back"/>
+    <form><pre> ${data}</pre>`)
       });
 
 })
