@@ -1,0 +1,15 @@
+{
+  "name": "hackservice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --watch index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "child_process": "^1.0.2",
+    "express": "^4.16.4",
+    "jade": "^1.11.0"
+  }
+}
